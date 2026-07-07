@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShop — Tienda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span>🔐</span>
+        <span class="brand-name">CyberShop</span>
+      </div>
+      <div class="nav-right">
+        <span class="nav-user" id="navUser">—</span>
+        <button class="cart-btn" id="cartToggle">
+          🛒 <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="btn-logout" onclick="logout()">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Seguridad digital certificada</p>
+      <h2 class="hero-title">Protege lo que más importa</h2>
+      <p class="hero-sub">Herramientas de ciberseguridad usadas por profesionales — ahora para todos.</p>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- FILTROS -->
+  <div class="filters-bar">
+    <div class="filters-inner">
+      <button class="filter-btn active" data-cat="all">Todos</button>
+      <button class="filter-btn" data-cat="antivirus">Antivirus</button>
+      <button class="filter-btn" data-cat="vpn">VPN</button>
+      <button class="filter-btn" data-cat="passwords">Contraseñas</button>
+      <button class="filter-btn" data-cat="firewall">Firewall</button>
+      <button class="filter-btn" data-cat="monitor">Monitoreo</button>
+    </div>
+  </div>
+
+  <!-- TIENDA -->
+  <main class="shop-layout">
+    <!-- PRODUCTOS -->
+    <section class="products-section">
+      <div class="section-header">
+        <h3>Productos <span id="productCount" class="count-badge">0</span></h3>
+        <div class="sort-wrap">
+          <select id="sortSelect" title="Ordenar productos">
+            <option value="default">Ordenar por</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name">Nombre A–Z</option>
+          </select>
+        </div>
+      </div>
+      <div id="productos" class="product-grid"></div>
+    </section>
+
+    <!-- CARRITO LATERAL -->
+    <aside class="cart-panel" id="cartPanel">
+      <div class="cart-header">
+        <h3>🛒 Tu carrito</h3>
+        <button class="cart-close" id="cartClose">✕</button>
+      </div>
+      <div id="carrito" class="cart-body"></div>
+      <div class="cart-footer" id="cartFooter">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span class="cart-total-price" id="cartTotal">$0</span>
+        </div>
+        <button class="btn-checkout" id="checkoutBtn">Pagar ahora →</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- MODAL ÉXITO -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <div class="modal-icon">✅</div>
+      <h3>¡Compra exitosa!</h3>
+      <p id="modalMsg"></p>
+      <button class="btn-primary" onclick="closeModal()">Continuar comprando</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 CyberShop · Grupo 5 · Ingeniería de sistemas y Ciberseguridad · Universidad César Vallejo</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

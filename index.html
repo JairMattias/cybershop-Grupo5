@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShop - Grupo 5</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CyberShop 🔒</h1>
+    <nav>
+      <a href="#productos">Productos</a>
+      <a href="#carrito">Carrito (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="productos">
+      <h2>Productos de Cybersecurity</h2>
+      <div id="product-list" class="producto-grid"></div>
+    </section>
+
+    <section id="carrito">
+      <h2>Tu Carrito</h2>
+      <div id="cart-items"></div>
+      <p>Total: $<span id="cart-total">0</span></p>
+      <button id="checkout-btn">Comprar</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 CyberShop - Grupo 5</p>
+    <p>Cybersecurity Engineering | Universidad César Vallejo</p>
+    <p>San Isidro, Lima, Perú</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShop — Crear cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-auth.css">
+</head>
+<body>
+  <div class="auth-bg">
+    <div class="auth-glow"></div>
+  </div>
+
+  <main class="auth-container">
+    <div class="auth-card">
+      <div class="brand">
+        <span class="brand-icon">🔐</span>
+        <h1>CyberShop</h1>
+        <p class="brand-sub">Crea tu cuenta en segundos</p>
+      </div>
+
+      <form id="registerForm" novalidate>
+        <div class="field-group">
+          <label for="newUsername">Usuario</label>
+          <input type="text" id="newUsername" placeholder="tu_usuario" autocomplete="username" required>
+        </div>
+        <div class="field-group">
+          <label for="newPassword">Contraseña</label>
+          <div class="pass-wrap">
+            <input type="password" id="newPassword" placeholder="••••••••" autocomplete="new-password" required>
+            <button type="button" class="toggle-pass" id="togglePass">👁</button>
+          </div>
+          <div class="strength-bar" id="strengthBar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <p class="strength-label" id="strengthLabel"></p>
+        </div>
+        <p class="form-error" id="registerError"></p>
+        <button type="submit" class="btn-primary">Crear cuenta</button>
+      </form>
+
+      <p class="auth-link">¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+    </div>
+  </main>
+
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('togglePass').addEventListener('click', function() {
+      const input = document.getElementById('newPassword');
+      const isText = input.type === 'text';
+      input.type = isText ? 'password' : 'text';
+      this.textContent = isText ? '👁' : '🙈';
+    });
+
+    document.getElementById('newPassword').addEventListener('input', function() {
+      const val = this.value;
+      const fill = document.getElementById('strengthFill');
+      const label = document.getElementById('strengthLabel');
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      const levels = [
+        { pct: '0%',   color: 'transparent', text: '' },
+        { pct: '25%',  color: '#ef4444',     text: 'Muy débil' },
+        { pct: '50%',  color: '#f97316',     text: 'Débil' },
+        { pct: '75%',  color: '#eab308',     text: 'Buena' },
+        { pct: '100%', color: '#22c55e',     text: 'Fuerte' },
+      ];
+      fill.style.width = levels[score].pct;
+      fill.style.background = levels[score].color;
+      label.textContent = levels[score].text;
+      label.style.color = levels[score].color;
+    });
+  </script>
+</body>
+</html>
